@@ -1,4 +1,4 @@
-package JogoLPOO;
+package JogoLPOO.interfaces;
 import javax.swing.JFrame;
 
 public class menus extends JFrame
