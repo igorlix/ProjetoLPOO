@@ -15,7 +15,7 @@ public class tabuleiro extends JFrame
 		//aba do tabuleiro.
 		setVisible (true);
 		//nome que ficará visivel na aba, indicando o nome do jogo.
-		setTitle ("Puzzle-n");
+		setTitle ("Puzzle-N");
 		setLayout (null);
 		//dimensão da aba
 		setBounds (350,100,700,500);
@@ -32,8 +32,8 @@ public class tabuleiro extends JFrame
 				
 			}
 		}
+		
 	}
-	
 	
 	//Teste no arquivo Main //
 	
