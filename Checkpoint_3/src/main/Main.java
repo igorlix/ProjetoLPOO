@@ -8,7 +8,7 @@ import interfaces.menu;
 import interfaces.ranking;
 
 public class Main {
-
+//Teste do tabuleiro//
 	public static void main(String[] args) 
 	{
 		tabuleiro tabuleiro = new tabuleiro();
