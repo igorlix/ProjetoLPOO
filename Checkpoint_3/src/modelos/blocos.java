@@ -2,6 +2,7 @@ package modelos;
 
 public class blocos 
 {
+	
 	private int valor;
 	private boolean verdade;
 

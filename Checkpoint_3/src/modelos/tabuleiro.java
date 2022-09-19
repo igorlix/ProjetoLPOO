@@ -3,14 +3,14 @@ package modelos;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class tabuleiro extends JFrame 
+public abstract class tabuleiro extends JFrame 
 {
 	private int tamanho;
 	private int n;
 	boolean x0 = false;
 	JButton[] bt = new JButton [9];
 	//formação do tabuleiro.
-	public tabuleiro () 
+	public abstract void tabuleiro () 
 	{
 		//aba do tabuleiro.
 		setVisible (true);
@@ -32,6 +32,18 @@ public class tabuleiro extends JFrame
 				
 			}
 		}
+		private boolean isMovimentoValido(Bloco a) throws Exception 
+		{
+			boolean check = (a != null && a.getVerdade());
+			if (!check)
+				throw new MovimentoInvalido();
+			return check;
+		}
+		try {
+			if (x < 0 || y < 0)
+				throw new MovimentoInvalido();
+
+			switch () {//contnuar para cada caso
 	}
 	
 	

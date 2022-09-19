@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 public class menu extends JFrame
 {
+	
 	public menu()
 	{
 		setTitle("Puzzle-N");

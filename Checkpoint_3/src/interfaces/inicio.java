@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class inicio extends JFrame 
+
 {
 		private Tabuleiro tabuleiro;
 		private Jogador jogador;
@@ -12,6 +13,6 @@ public class inicio extends JFrame
 		{
 			String JogadorNome = JOptionPane.showInputDialog("Digite seu nome:");
 			jogador = new Jogador(JogadorNome);
-			tabuleiro = new Tabuleiro();
+			tabuleiro = new Tabuleiro(); 
 		}
 }
