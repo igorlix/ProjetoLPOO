@@ -25,7 +25,49 @@ public class Tabuleiro extends JFrame {
 				
 				
 			}
+			
+public void embaralhar() {
+	int[] bnum = new int [9];
+	int i, j , verificadorDeLinhas;
+	boolean flag = false;
+	
+	i = 1 ;
+	
+	do {
+		Random rnd =  new Random () ;
+		verificadorDeLinhas = rnd.nextInt ((8)+ 1);
+		for (j=1 ; j <= i; j++) {
+			if (bnum [j] == verificadorDeLinhas) {
+				flag = true;
+				break;	
+			}
+			if (flag == true) {
+				flag = false;	
+			}
+			else {
+				bnum[i] = verificadorDeLinhas;
+				i = i + 1;
+				
+			}
 		}
+		while (i<=8);
+			jbtnNum1.setText(integer.toString(bnum[1]));
+			jbtnNum2.setText(integer.toString(bnum[2]));
+			jbtnNum3.setText(integer.toString(bnum[3]));
+			jbtnNum4.setText(integer.toString(bnum[4]));
+			jbtnNum5.setText(integer.toString(bnum[5]));
+			jbtnNum6.setText(integer.toString(bnum[6]));
+			jbtnNum7.setText(integer.toString(bnum[7]));
+			jbtnNum8.setText(integer.toString(bnum[8]));
+			jbtnNum9.setText("");
+	}
+}
+			
+			
+			
+			
+		}
+		
 	
 	
 
