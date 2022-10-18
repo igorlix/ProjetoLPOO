@@ -43,7 +43,7 @@ public class menus extends JFrame {
         botaoMenu = new JButton();
 
 
-        loadInGameButton(botaoReiniciar, "Reiniciar", main.logica.PANEL_WIDTH - 200, main.logica.PANEL_HEIGHT - 50, 190, false);
+        loadInGameButton(botaoReiniciar, "Reiniciar", main.logica.PANEL_WIDTH - 330, main.logica.PANEL_HEIGHT - 50, 190, false);
         loadInGameButton(botaoSair, "Sair", main.logica.PANEL_WIDTH - 130, main.logica.PANEL_HEIGHT - 50, 120, false);
         loadInGameButton(botaoMenu, "Menu", 0, main.logica.PANEL_HEIGHT - 50, 200, true);
 
