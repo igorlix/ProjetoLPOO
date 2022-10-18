@@ -2,14 +2,21 @@ package interfaces;
 
 import javax.swing.*;
 
+
 import controle.controle;
 import main.logica;
+import main.rodar;
 
 import java.awt.*;
 
 public class menus extends JFrame {
 
-    public static int BOARD_SIZE;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static int BOARD_SIZE;
 
     logica logica;
     JButton botaoReiniciar;
@@ -52,7 +59,7 @@ public class menus extends JFrame {
         botaoMenu.addActionListener(e -> {
             inicio.botaoAtivado = true;
             this.dispose();
-            inicio.newOptionsScreen();
+            rodar.newOptionsScreen();
         });
 
     }

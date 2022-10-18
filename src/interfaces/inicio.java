@@ -10,7 +10,11 @@ import java.awt.*;
 import java.util.Iterator;
 
 public class inicio extends JFrame {
-    public static boolean botaoAtivado = false;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static boolean botaoAtivado = false;
     JPanel painel;
     private final ButtonGroup dificuldades;
     JButton iniciar;
@@ -82,7 +86,7 @@ public class inicio extends JFrame {
 
     final void loadPreferencias() {
 
-        this.setTitle("Options Screen");
+        this.setTitle("Início");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.pack();
@@ -97,15 +101,6 @@ public class inicio extends JFrame {
                 return botao;
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        newOptionsScreen();
-
-    }
-
-    public static void newOptionsScreen() {
-        SwingUtilities.invokeLater(() -> new inicio().setVisible(true));
     }
 
     private void jogo(String dificuldades) {

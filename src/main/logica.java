@@ -15,7 +15,11 @@ import java.awt.*;
 
 public class logica extends JPanel {
 
-    public static int PANEL_WIDTH = 600;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static int PANEL_WIDTH = 600;
     public static int PANEL_HEIGHT = 600;
     private final tabuleiro tabuleiro;
 

@@ -9,7 +9,11 @@ import java.awt.*;
 
 public class blocos extends JButton {
 
-    public static int WIDTH = logica.PANEL_WIDTH / menus.BOARD_SIZE;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static int WIDTH = logica.PANEL_WIDTH / menus.BOARD_SIZE;
     public static int HEIGHT = logica.PANEL_HEIGHT / menus.BOARD_SIZE;
 
     private int x, y;
