@@ -9,6 +9,7 @@ import modelos.blocos;
 import modelos.tabuleiro;
 
 
+
 import java.awt.*;
 
 
@@ -23,14 +24,14 @@ public class logica extends JPanel {
         PANEL_HEIGHT += blocos.HEIGHT;
     }
 
-    public logica(int difficulty) {
-        tabuleiro = new tabuleiro(difficulty);
-        loadPreferences();
-        addActionListeners();
+    public logica(int dificuldade) {
+        tabuleiro = new tabuleiro(dificuldade);
+        loadPreferencias();
+        verificar();
 
     }
 
-    final void loadPreferences() {
+    final void loadPreferencias() {
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         this.setBackground(Color.gray);
         this.setFocusable(true);
@@ -40,25 +41,28 @@ public class logica extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g); 
-        drawGrid(g);
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        drawGrid(g2D);
         loadbloco();
     }
 
     private void drawGrid(Graphics g) {
 
         g.setColor(Color.gray);
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         for (int i = 0; i <= tabuleiro.getN(); i++) {
-            g2.drawLine(blocos.WIDTH / 2 + i * blocos.WIDTH, blocos.HEIGHT / 2, blocos.WIDTH / 2 + i * blocos.WIDTH, PANEL_HEIGHT - blocos.HEIGHT / 2);
+            g2D.drawLine(blocos.WIDTH / 2 + i * blocos.WIDTH, blocos.HEIGHT / 2, blocos.WIDTH / 2 + i * blocos.WIDTH, PANEL_HEIGHT - blocos.HEIGHT / 2);
         }
 
         for (int i = 0; i <= tabuleiro.getN(); i++) {
-            g2.drawLine(blocos.WIDTH / 2, blocos.HEIGHT / 2 + blocos.HEIGHT * i, PANEL_WIDTH - blocos.WIDTH / 2, blocos.WIDTH / 2 + blocos.WIDTH * i);
+            g2D.drawLine(blocos.WIDTH / 2, blocos.HEIGHT / 2 + blocos.HEIGHT * i, PANEL_WIDTH - blocos.WIDTH / 2, blocos.WIDTH / 2 + blocos.WIDTH * i);
         }
     }
 
-    private void addActionListeners() {
+    private void verificar() {
         for (blocos[] bloco : tabuleiro.getBoard()) {
             for (blocos blocos : bloco) {
                 blocos.addActionListener(e -> {
@@ -90,15 +94,6 @@ public class logica extends JPanel {
         }
     }
 
-    public void debug(blocos blocos) {
-
-        int x1 = (modelos.blocos.HEIGHT / 2 + blocos.getY()) / modelos.blocos.HEIGHT - 1;
-        int y1 = (blocos.getX() + modelos.blocos.WIDTH / 2) / modelos.blocos.WIDTH - 1;
-
-        System.out.println("[" + x1 + "][" + y1 + "]" + " with value " + tabuleiro.getBoard()[x1][y1].getValue() + " ==? " +
-                "blocos at position " + "(" + blocos.getX() + "," + blocos.getY() + ")" + " with value " + blocos.getValue());
-
-    }
 
     public boolean moveblocos(blocos blocos) {
 
@@ -187,10 +182,10 @@ public class logica extends JPanel {
                 currentPattern.append(blocos.getValue());
             }
         }
-        return currentPattern.toString().equals(generateWinPattern());
+        return currentPattern.toString().equals(vitoria());
     }
 
-    private String generateWinPattern() {
+    private String vitoria() {
         StringBuilder pattern = new StringBuilder();
         for (int i = 0; i < tabuleiro.getN() * tabuleiro.getN(); i++) {
             pattern.append(i + 1);

@@ -12,18 +12,18 @@ public class menus extends JFrame {
     public static int BOARD_SIZE;
 
     logica logica;
-    JButton resetButton;
-    JButton exitButton;
-    JButton mainMenuButton;
+    JButton botaoReiniciar;
+    JButton botaoSair;
+    JButton botaoMenu;
 
     private final int dificuldade;
 
     public menus(int dificuldade) {
         this.dificuldade = dificuldade;
         novoJogo(dificuldade);
-        loadPreferences();
+        loadPreferencias();
     }
-    final void loadPreferences() {
+    final void loadPreferencias() {
 
         this.setTitle("Puzzle-N");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,18 +38,18 @@ public class menus extends JFrame {
         logica = new logica(dificuldade);
         this.add(logica);
 
-        resetButton = new JButton();
-        exitButton = new JButton();
-        mainMenuButton = new JButton();
+        botaoReiniciar = new JButton();
+        botaoSair = new JButton();
+        botaoMenu = new JButton();
 
 
-        loadInGameButton(resetButton, "Reiniciar", main.logica.PANEL_WIDTH - 330, main.logica.PANEL_HEIGHT - 50, 190, false);
-        loadInGameButton(exitButton, "Sair", main.logica.PANEL_WIDTH - 130, main.logica.PANEL_HEIGHT - 50, 120, false);
-        loadInGameButton(mainMenuButton, "Menu", 0, main.logica.PANEL_HEIGHT - 50, 200, true);
+        loadInGameButton(botaoReiniciar, "Reiniciar", main.logica.PANEL_WIDTH - 200, main.logica.PANEL_HEIGHT - 50, 190, false);
+        loadInGameButton(botaoSair, "Sair", main.logica.PANEL_WIDTH - 130, main.logica.PANEL_HEIGHT - 50, 120, false);
+        loadInGameButton(botaoMenu, "Menu", 0, main.logica.PANEL_HEIGHT - 50, 200, true);
 
-        resetButton.addActionListener(e -> restart());
-        exitButton.addActionListener(e -> System.exit(0));
-        mainMenuButton.addActionListener(e -> {
+        botaoReiniciar.addActionListener(e -> restart());
+        botaoSair.addActionListener(e -> System.exit(0));
+        botaoMenu.addActionListener(e -> {
             inicio.botaoAtivado = true;
             this.dispose();
             inicio.newOptionsScreen();

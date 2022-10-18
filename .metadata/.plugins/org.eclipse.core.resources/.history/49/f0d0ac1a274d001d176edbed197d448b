@@ -1,0 +1,74 @@
+package interfaces;
+
+import javax.swing.*;
+
+import controle.controle;
+import main.logica;
+
+import java.awt.*;
+
+public class menus extends JFrame {
+
+    public static int BOARD_SIZE;
+
+    logica logica;
+    JButton resetButton;
+    JButton exitButton;
+    JButton mainMenuButton;
+
+    private final int difficulty;
+
+    public menus(int difficulty) {
+        this.difficulty = difficulty;
+        newGame(difficulty);
+        loadPreferences();
+    }
+    final void loadPreferences() {
+
+        this.setTitle("N-Puzzle game");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.pack();
+        this.setLocationRelativeTo(null);
+
+    }
+
+    public void newGame(int difficulty) {
+
+        logica = new logica(difficulty);
+        this.add(logica);
+
+        resetButton = new JButton();
+        exitButton = new JButton();
+        mainMenuButton = new JButton();
+
+
+        loadInGameButton(resetButton, "RESTART", main.logica.PANEL_largura - 330, main.logica.PANEL_HEIGHT - 50, 190, false);
+        loadInGameButton(exitButton, "EXIT", main.logica.PANEL_largura - 130, main.logica.PANEL_HEIGHT - 50, 120, false);
+        loadInGameButton(mainMenuButton, "MAIN MENU", 0, main.logica.PANEL_HEIGHT - 50, 200, true);
+
+        resetButton.addActionListener(e -> restart());
+        exitButton.addActionListener(e -> System.exit(0));
+        mainMenuButton.addActionListener(e -> {
+            inicio.isMainButtonActivated = true;
+            this.dispose();
+            inicio.newOptionsScreen();
+        });
+
+    }
+
+    public void restart() {
+        this.remove(logica);
+        newGame(difficulty);
+        SwingUtilities.updateComponentTreeUI(this);
+    }
+
+    private void loadInGameButton(JButton button, String text, int x, int y, int largura, boolean isMain) {
+        Font inGameButtonFont = isMain ? new Font("MV Boli", Font.PLAIN, 25) : new Font("Magneto Kalın", Font.PLAIN, 25);
+        controle.preferencias(button, Color.blue, Color.red, inGameButtonFont);
+        controle.botoes(logica, button, text, true, x, y, largura, 50);
+
+    }
+
+
+}

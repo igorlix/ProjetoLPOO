@@ -1,0 +1,99 @@
+package controle;
+
+import javax.swing.*;
+
+import modelos.blocos;
+
+public class movimento {
+    public static final int movimento = 0;//velocidade do movimento dos blocos//
+    public static int fps = blocos.WIDTH;
+
+    public static void movimentoBlocos(blocos blocos, blocos espacoVazio, JPanel painel) {
+        String direcao = detectMovementdirecao(blocos, espacoVazio);
+
+        int prevPosX = blocos.getX();
+        int prevPosY = blocos.getY();
+
+        switch (direcao) {
+            case "Esquerda":
+                new Thread(() -> {
+                    for (int i = 0; i < fps; i++) {
+                        try {
+                            Thread.sleep(movimento);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        blocos.setX(blocos.getX() - 1);
+                        moveespacoVazio(espacoVazio, prevPosX, prevPosY);
+                        painel.repaint();
+                    }
+                }).start();
+                break;
+            case "Direita":
+                new Thread(() -> {
+                    for (int i = 0; i < fps; i++) {
+                        try {
+                            Thread.sleep(movimento);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        blocos.setX(blocos.getX() + modelos.blocos.WIDTH / fps);
+                        moveespacoVazio(espacoVazio, prevPosX, prevPosY);
+                        painel.repaint();
+                    }
+                }).start();
+                break;
+            case "UP":
+                new Thread(() -> {
+                    for (int i = 0; i < fps; i++) {
+                        try {
+                            Thread.sleep(movimento);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        moveespacoVazio(espacoVazio, prevPosX, prevPosY);
+                        blocos.setY(blocos.getY() - modelos.blocos.HEIGHT / fps);
+                        painel.repaint();
+                    }
+                }).start();
+                break;
+            case "DOWN":
+                new Thread(() -> {
+                    for (int i = 0; i < fps; i++) {
+                        try {
+                            Thread.sleep(movimento);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        blocos.setY(blocos.getY() + modelos.blocos.HEIGHT / fps);
+                        moveespacoVazio(espacoVazio, prevPosX, prevPosY);
+                        painel.repaint();
+                    }
+                }).start();
+                break;
+        }
+    }
+
+    private static void moveespacoVazio(blocos espacoVazio, int prevPosX, int prevPosY) {
+        espacoVazio.setX(prevPosX);
+        espacoVazio.setY(prevPosY);
+    }
+
+    public static String detectMovementdirecao(blocos blocos, blocos espacoVazio) {
+
+        if (blocos.getX() > espacoVazio.getX() && blocos.getY() == espacoVazio.getY())
+            return "LEFT";
+
+        if (blocos.getX() < espacoVazio.getX() && blocos.getY() == espacoVazio.getY())
+            return "RIGHT";
+
+        if (blocos.getY() > espacoVazio.getY() && blocos.getX() == espacoVazio.getX())
+            return "UP";
+
+        if (blocos.getY() < espacoVazio.getY() && blocos.getX() == espacoVazio.getX())
+            return "DOWN";
+
+        return "UNKNOWN";
+    }
+
+}

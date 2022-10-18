@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="interfaces.menus"/>
+    <fullyQualifiedTypeName name="modelos.tabuleiro"/>
+    <fullyQualifiedTypeName name="main.logica"/>
+    <fullyQualifiedTypeName name="controle.controle"/>
+    <fullyQualifiedTypeName name="modelos.blocos"/>
+    <fullyQualifiedTypeName name="controle.movimento"/>
+    <fullyQualifiedTypeName name="interfaces.inicio"/>
+</qualifiedTypeNameHistroy>

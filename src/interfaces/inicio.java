@@ -25,7 +25,7 @@ public class inicio extends JFrame {
         this.add(painel);
 
         loadPanel();
-        loadPreferences();
+        loadPreferencias();
 
         instantiateAllButtons();
         loadAllButtons();
@@ -47,9 +47,12 @@ public class inicio extends JFrame {
     final void loadPanel() {
 
         painel.setPreferredSize(new Dimension(800, 800));
-        painel.setBackground(Color.gray);
+        painel.setBackground(Color.ORANGE);
         painel.setFocusable(true);
         painel.setLayout(null);
+      //  background = new JLabel("", new ImageIcon("imagens/background.gif"),JLabel.CENTER);
+        //background.setBounds(0,0,width,height);
+     //  background.setLayout(background);
     }
 
     public void loadButton(JButton botao, String texto, int x, int y, int largura, int altura) {
@@ -77,7 +80,7 @@ public class inicio extends JFrame {
         return count;
     }
 
-    final void loadPreferences() {
+    final void loadPreferencias() {
 
         this.setTitle("Options Screen");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,7 +112,7 @@ public class inicio extends JFrame {
         switch (dificuldades) {
             case "Fácil":
                 this.dispose();
-                novoJogo(3);
+                novoJogo(2);
                 break;
             case "Médio":
                 this.dispose();
@@ -121,7 +124,7 @@ public class inicio extends JFrame {
                 break;
             case "Puzzle-N Maluco":
                 this.dispose();
-                novoJogo(4);
+                novoJogo(5);
                 break;
         }
     }

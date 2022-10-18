@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\Hd novo\Pastas\Área de trabalho\Jogo Puzzle-N\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1132206783.index
+2310461673.index
